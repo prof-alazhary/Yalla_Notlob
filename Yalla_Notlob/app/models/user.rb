@@ -5,6 +5,10 @@
            :recoverable, :rememberable, :trackable, :validatable
     devise :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
     has_and_belongs_to_many :oauth_credentials
+
+    #mount avatar uploader
+    mount_uploader :avatar, AvatarUploader
+    
     def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
      user.email = auth.info.email
