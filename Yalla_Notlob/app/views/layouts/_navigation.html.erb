@@ -15,7 +15,7 @@
 
         <%@user = current_user%>
 
-        <li><%= link_to 'Friends', users_path  %></li>
+        <li><%= link_to 'Friends', friends_path  %></li>
         <li><%= link_to 'Groups', user_groups_path(user_id:@user.id)  %></li>
         <li><%= link_to 'Orders', user_orders_path(user_id:@user.id) %></li>
       </ul>
@@ -38,7 +38,7 @@
         &nbsp; &nbsp;
        <li>  <img src="<%= current_user.avatar %>" height="50px" width="50px"/></li>
         &nbsp; &nbsp;
-        
+
 
           <li><%= link_to 'Logout', destroy_user_session_path,method: :delete %></li>
           <li><%= %></li>
