@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170330184910) do
     t.index ["user_id"], name: "index_groups_on_user_id", using: :btree
   end
 
+  create_table "groups_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_groups_users_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
+  end
+
   create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "order_id"
@@ -77,19 +84,12 @@ ActiveRecord::Schema.define(version: 20170330184910) do
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
-  create_table "users_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.index ["group_id"], name: "index_users_groups_on_group_id", using: :btree
-    t.index ["user_id"], name: "index_users_groups_on_user_id", using: :btree
-  end
-
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_user_id"
   add_foreign_key "groups", "users"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "users_groups", "groups"
-  add_foreign_key "users_groups", "users"
 end

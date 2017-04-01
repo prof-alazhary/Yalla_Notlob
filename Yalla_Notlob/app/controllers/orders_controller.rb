@@ -14,7 +14,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    # @order = Order.new
+    @user=User.find params[:user_id]
+    @order = @user.orders.new
   end
 
   # GET /orders/1/edit
@@ -24,7 +26,9 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    # @order = Order.new(order_params)
+    @user=User.find params[:user_id]
+    @order = @user.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
