@@ -4,7 +4,18 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    # @users = User.all
+    @users = if params[:query].present?
+      User.search params[:query], match: :word_start
+    else
+      User.all
+    end
+  end
+
+  def autocomplete
+    render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
+      { name: user.name, value: user.id }
+    end
   end
 
   # GET /users/1

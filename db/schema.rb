@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330184910) do
+ActiveRecord::Schema.define(version: 20170401184450) do
 
-  create_table "friendships", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "friend_user_id"
-    t.index ["friend_user_id"], name: "fk_rails_b908cea76b", using: :btree
-    t.index ["user_id"], name: "index_friendships_on_user_id", using: :btree
+  create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,8 +84,6 @@ ActiveRecord::Schema.define(version: 20170330184910) do
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
-  add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "friend_user_id"
   add_foreign_key "groups", "users"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"

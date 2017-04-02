@@ -14,11 +14,12 @@
   <%= form_for User.new do |f| %>
 
   <div class="form-group">
-    <h5><%= f.label :email %></h5>
-    <%= f.text_field :email, class: "form-control", placeholder: "Your Friend Email" %>
 
-  </div>
-     <%= f.submit "Add Friend", class: 'btn btn-default' %>
+
+<%= form_tag users_path, method: :get do %>
+<%= text_field_tag :query, params[:query], class: 'form-control mr-sm-2 typeahead', id: "typeahead" %>
+<%= submit_tag "Search" %>
+<% end %>
 </div>
 </div>
 
@@ -29,7 +30,7 @@
 <div class="panel panel-default">
 <div class="panel-heading">
   <div class="container">
-    <h4>Friends List</h4>
+    <h4><%= current_user.name%>'s Friends List</h4>
   </div>
 </div>
   <div class="panel-body" id="frindesPanelBody">
@@ -38,64 +39,25 @@
 
             <div class="container">
               <!-- row of Friends -->
+              <% for friendship in current_user.friendships %>
               <div class="row">
               <div class="col-sm-3">
-              <h4>Someone</h4>
-              <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
+              <!-- <h4><%= friendship.friend.name%></h4> -->
+              <img src="<%= friendship.friend.avatar%>" width="80px" height="80px" class="img-thumbnail"/>
 
             <br/>
 
 
                 <br>
-                <%= link_to '#',:class => 'btn btn-danger' do %>
-                  <i class="icon-remove icon-white"></i>
+                <%= h friendship.friend.name %>
+                  (<%= link_to "remove", friendship, :method => :delete %>)
 
-                  UnFriend
-                <% end %><p></p>
-                </div>
-                <div class="col-sm-3">
-                <h4>Someone</h4>
-                <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-              <br/>
+                <% end %>
 
 
-                  <br>
-                  <%= link_to '#',:class => 'btn btn-danger' do %>
-                    <i class="icon-remove icon-white"></i>
-
-                    UnFriend
-                  <% end %><p></p>
-                  </div>
-                  <div class="col-sm-3">
-                  <h4>Someone</h4>
-                  <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-                <br/>
 
 
-                    <br>
-                    <%= link_to '#',:class => 'btn btn-danger' do %>
-                      <i class="icon-remove icon-white"></i>
 
-                      UnFriend
-                    <% end %><p></p>
-                    </div>
-
-                    <div class="col-sm-3">
-                    <h4>Someone</h4>
-                    <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-                  <br/>
-
-
-                      <br>
-                      <%= link_to '#',:class => 'btn btn-danger' do %>
-                        <i class="icon-remove icon-white"></i>
-
-                        UnFriend
-                      <% end %><p></p>
-                      </div>
             </div>
           </div>
 
@@ -104,4 +66,7 @@
   </div>
 
 </div>
+<p>
+  <%= link_to "Find Friends", users_path %>
+</p>
 </div>
