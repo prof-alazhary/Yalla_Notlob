@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: Yalla_Notlob_trial1_development
+  database: Yalla_Notlob_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: Yalla_Notlob__trial1_test
+  database: Yalla_Notlob_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
