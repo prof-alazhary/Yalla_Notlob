@@ -24,7 +24,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'simple_form', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3'
 
-
+#autocomplete
+gem 'searchkick'
+gem 'rails4-autocomplete'
 
 #SocialMediaAPI
 gem 'omniauth-facebook'
