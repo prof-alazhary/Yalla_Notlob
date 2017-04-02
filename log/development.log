@@ -13230,3 +13230,165 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 143ms (Views: 117.6ms | Searchkick: 14.1ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/users?utf8=%E2%9C%93&query=iti%40gmail.com&commit=Search" for 127.0.0.1 at 2017-04-02 22:02:50 +0200
+Processing by UsersController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"iti@gmail.com", "commit"=>"Search"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[33mUser Search (20.5ms)[0m  curl http://localhost:9200/users_development/_search?pretty -d '{"query":{"dis_max":{"queries":[{"match":{"_all":{"query":"iti@gmail.com","boost":10,"operator":"and","analyzer":"searchkick_search"}}},{"match":{"_all":{"query":"iti@gmail.com","boost":10,"operator":"and","analyzer":"searchkick_search2"}}},{"match":{"_all":{"query":"iti@gmail.com","boost":1,"operator":"and","analyzer":"searchkick_search","fuzziness":1,"prefix_length":0,"max_expansions":3,"fuzzy_transpositions":true}}},{"match":{"_all":{"query":"iti@gmail.com","boost":1,"operator":"and","analyzer":"searchkick_search2","fuzziness":1,"prefix_length":0,"max_expansions":3,"fuzzy_transpositions":true}}}]}},"size":1000,"from":0,"timeout":"11s","_source":false}'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2[0m
+  [1m[36mFriendship Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `friendships` WHERE `friendships`.`user_id` = 1 AND `friendships`.`friend_id` = 2 AND `friendships`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mFriendship Load (0.4ms)[0m  [1m[34mSELECT  `friendships`.* FROM `friendships` WHERE `friendships`.`user_id` = 1 AND (friend_id = 2 AND user_id = 1) ORDER BY `friendships`.`id` ASC LIMIT 1[0m
+  Rendered users/index.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 149ms (Views: 117.1ms | Searchkick: 20.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-04-02 22:02:54 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+Completed 200 OK in 122ms (Views: 108.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-04-02 22:02:56 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.6ms)
+  Rendered users/edit.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 145ms (Views: 133.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-04-02 22:04:54 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/edit.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 132ms (Views: 119.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-04-02 22:05:18 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (157.7ms)
+  Rendered users/edit.html.erb within layouts/application (163.6ms)
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `password' for #<ActionView::Helpers::FormBuilder:0x007f2a9993d760>
+Did you mean?  password_field):
+    23: 
+    24:   <div class="field">
+    25:     <%= f.label :password %>
+    26:     <%= f.password :password %>
+    27:   </div>
+    28: 
+    29: 
+  
+app/views/users/_form.html.erb:26:in `block in _app_views_users__form_html_erb___3889326777966185732_69910470997160'
+app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___3889326777966185732_69910470997160'
+app/views/users/edit.html.erb:3:in `_app_views_users_edit_html_erb___900344052702369327_69910471099020'
+  Rendering /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.7ms)
+  Rendering /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/hagerelsayed/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (56.3ms)
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-04-02 22:05:32 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (412.1ms)
+  Rendered users/edit.html.erb within layouts/application (417.6ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 551ms (Views: 540.4ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/users/2" for 127.0.0.1 at 2017-04-02 22:05:40 +0200
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7V5kD/mG2eomms5DIWWSJKxdfJGwkM3ACcSBn9ncmGtkO773xRk0in4xOk1YTdrzK4zx5m14LAs9M5LxgRTj1w==", "user"=>{"name"=>"iti", "email"=>"iti@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Update User", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (76.8ms)[0m  [1m[33mUPDATE `users` SET `encrypted_password` = '$2a$11$yEdVlmJQYO9h0ucEMb2bAerrGtEG79lQTLi7gs5evPNvLA8hxZDoO', `updated_at` = '2017-04-02 20:05:40' WHERE `users`.`id` = 2[0m
+  [1m[35m (92.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[33mUser Store (186.1ms)[0m  {"id":2}
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 805ms (Searchkick: 186.1ms | ActiveRecord: 170.3ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-04-02 22:05:41 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 155ms (Views: 144.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-02 22:05:50 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT `orders`.* FROM `orders`[0m
+  Rendered orders/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+Completed 200 OK in 120ms (Views: 109.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/groups" for 127.0.0.1 at 2017-04-02 22:05:51 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (18.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  Rendered groups/index.html.erb within layouts/application (30.7ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+Completed 200 OK in 176ms (Views: 127.3ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-02 22:05:54 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.4ms)[0m  [1m[34mSELECT `friendships`.* FROM `friendships` WHERE `friendships`.`user_id` = 1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  Rendered friends/index.html.erb within layouts/application (11.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 132ms (Views: 120.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-02 22:05:56 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+Completed 200 OK in 159ms (Views: 118.0ms | ActiveRecord: 0.5ms)
+
+
