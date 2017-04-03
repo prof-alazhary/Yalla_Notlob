@@ -16,9 +16,9 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.user %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_groups_path %></td>
+
+
       </tr>
     <% end %>
   </tbody>
@@ -40,14 +40,14 @@
 <div class="col-sm-12">
 
 
-  <%= form_for User.new do |f| %>
+  <%= form_for ([@user,@group]) do |f| %>
 
   <div class="form-group">
     <h5><%= f.label :group %></h5>
     <%= f.text_field :name, class: "form-control", placeholder: "Group Name" %>
-
+  <%= f.hidden_field :user_id ,value: @user.id %>
   </div>
-     <%= f.submit "Add Group", class: 'btn btn-default' %>
+     <%= f.submit "Add Grouppp", class: 'btn btn-default' %>
 </div>
 </div>
 
@@ -61,11 +61,12 @@
 
     <h4>My Groups</h4>
 </div>
-
 <div class="panel-body">
+  <% @groups.each do |mygroup| %>
+  <% if @user.id== mygroup.user_id %>
   <div class="row">
     <div class="col-sm-4">
-    <a href="#">OS</a>
+    <a href="#"><%=mygroup.name %> </a>
   </div>
   <div class="col-sm-4">
     <button class="glyphicon glyphicon-plus-sign btn btn-primary"></button>
@@ -76,6 +77,8 @@
   </div>
 
 <br><br>
+<% end %>
+<% end %>
 
   <!-- second row -->
   <div class="row">
