@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
-
+<strong class="text-center" style="background-color:black;color:white;"><%= link_to 'Start New Order', new_user_order_path %></strong>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,11 +18,8 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <!-- <td><%= order.meal %></td>
-        <td><%= order.rest_name %></td>
-        <td><%= order.menu_img %></td>
-        <td><%= order.user %></td> -->
-        <td><%= link_to 'Show', [@user,@order] %></td>
+
+        <td><%= link_to 'Show', user_order_path %></td>
         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -31,5 +28,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Order', new_user_order_path %>
