@@ -8,8 +8,9 @@ end
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-
-gem 'pg'
+gem 'mysql2'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+#gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
