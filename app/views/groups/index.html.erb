@@ -1,32 +1,3 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<h1>Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.user %></td>
-        <td><%= link_to 'Show', user_groups_path %></td>
-
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_user_group_path %> -->
 <div class="container">
   <div class="page-header">
   <h1>Groups</h1>
@@ -45,9 +16,9 @@
   <div class="form-group">
     <h5><%= f.label :group %></h5>
     <%= f.text_field :name, class: "form-control", placeholder: "Group Name" %>
-  <%= f.hidden_field :user_id ,value: @user.id %>
+<!--  <%= f.hidden_field :user_id ,value: @user.id %> -->
   </div>
-     <%= f.submit "Add Grouppp", class: 'btn btn-default' %>
+     <%= f.submit "Add Grouppp", id: "addGroup" ,class: 'btn btn-default' %>
 </div>
 </div>
 
@@ -61,50 +32,25 @@
 
     <h4>My Groups</h4>
 </div>
-<div class="panel-body">
+<div id="allGroups" class="panel-body">
   <% @groups.each do |mygroup| %>
   <% if @user.id== mygroup.user_id %>
-  <div class="row">
-    <div class="col-sm-4">
-    <a href="#"><%=mygroup.name %> </a>
+  <div id='group_row' class="row">
+    <div class='col-sm-4'>
+    <h5><%=mygroup.name %></h5>
   </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-plus-sign btn btn-primary"></button>
+  <div class='col-sm-4'>
+    <button id='add_members' name='<%=mygroup.name %>' val='<%=mygroup.id%>' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
   </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-remove-sign btn btn-danger"></button>
+  <div class='col-sm-4'>
+    <button id='delete_group' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
   </div>
   </div>
 
-<br><br>
+<br/>
 <% end %>
 <% end %>
 
-  <!-- second row -->
-  <div class="row">
-    <div class="col-sm-4">
-    <a href="#">OS</a>
-  </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-plus-sign btn btn-primary"></button>
-  </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-remove-sign btn btn-danger"></button>
-  </div>
-  </div>
-
-<br><br>
-  <div class="row">
-    <div class="col-sm-4">
-    <a href="#">OS</a>
-  </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-plus-sign btn btn-primary"></button>
-  </div>
-  <div class="col-sm-4">
-    <button class="glyphicon glyphicon-remove-sign btn btn-danger"></button>
-  </div>
-  </div>
 
 </div>
 </div>
@@ -117,51 +63,34 @@
 <div class="panel-heading">
   <div class="container">
 
-    <h4>Group Name</h4>
+    <h4 id='g_title' val='0'>Group Name</h4>
 </div>
 </div>
-<div class="panel-body">
+<div id='group' class="panel-body">
   <div class="row">
     <div class="col-sm-12">
-      <form>
-        <label>Your Friend Name </label>
-        <input type="text" name="friendName"  placeholder=""/>
-        <input type="submit" value="Add"  placeholder=""/>
-      </form>
+    <label>Your Friend Name </label>
+    <input type="text" id='friend_email' name="" value="">
+    <button type="button" id='addFriend' name="button">add</button>
    </div>
  </div>
 
-   <div class="row">
-
-     <div class="col-sm-6">
-     <h4>Someone</h4>
-     <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-   <br/>
-
-
-       <br>
-       <%= link_to '#',:class => 'btn btn-danger' do %>
-         <i class="icon-remove icon-white"></i>
-
-         UnFriend
-       <% end %><p></p>
-       </div>
-       <div class="col-sm-6">
-       <h4>Someone</h4>
-       <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-     <br/>
+    <div  class="">
+      <div id='members' class="row">
+          <div class="col-sm-3">
+          <h4>Someone</h4>
+          <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
+        <br/>
+            <br>
+            <%= link_to '#',:class => 'btn btn-danger' do %>
+              <i class="icon-remove icon-white"></i>
+              UnFriend
+            <% end %><p></p>
+            </div>
+      </div>
+    </div>
 
 
-         <br>
-         <%= link_to '#',:class => 'btn btn-danger' do %>
-           <i class="icon-remove icon-white"></i>
-
-           UnFriend
-         <% end %><p></p>
-         </div>
-   </div>
   </div>
 
 </div>
