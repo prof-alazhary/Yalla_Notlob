@@ -11,12 +11,12 @@
 <div class="col-sm-12">
 
 
-  <%= form_for User.new do |f| %>
+  <!-- <%= form_for User.new do |f| %> -->
 
   <div class="form-group">
 
 
-<%= form_tag users_path, method: :get do %>
+<%= form_tag users_path , method: :get do %>
 <%= text_field_tag :query, params[:query], class: 'form-control mr-sm-2 typeahead', id: "typeahead" %>
 <%= submit_tag "Search" %>
 <% end %>
@@ -30,40 +30,41 @@
 <div class="panel panel-default">
 <div class="panel-heading">
   <div class="container">
-    <h4><%= current_user.name%>'s Friends List</h4>
+    <h4>My Friends List</h4>
   </div>
 </div>
   <div class="panel-body" id="frindesPanelBody">
-    <div class="row">
+    <!-- <div class="row"> -->
 
 
             <div class="container">
               <!-- row of Friends -->
-              <% for friendship in current_user.friendships %>
+
               <div class="row">
+<% for friendship in current_user.friendships %>
               <div class="col-sm-3">
               <!-- <h4><%= friendship.friend.name%></h4> -->
-              <img src="<%= friendship.friend.avatar%>" width="80px" height="80px" class="img-thumbnail"/>
+              <img src="<%= friendship.friend.avatar%>" width="80px" height="80px" class="img-thumbnail" alt="img"/>
 
-            <br/>
+
 
 
                 <br>
                 <%= h friendship.friend.name %>
-                  (<%= link_to "remove", friendship, :method => :delete %>)
-
+                  <%= link_to "remove", friendship, :method => :delete %>
+  </div>
                 <% end %>
 
 
 
 
 
-            </div>
+
           </div>
 
 
 </div>
-  </div>
+  <!-- </div> -->
 
 </div>
 <p>
