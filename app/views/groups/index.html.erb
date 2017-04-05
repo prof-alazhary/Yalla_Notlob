@@ -37,7 +37,7 @@
   <% if @user.id== mygroup.user_id %>
   <div id='group_row' class="row">
     <div class='col-sm-4'>
-    <a href='#' ><%=mygroup.name %> </a>
+    <h5><%=mygroup.name %></h5>
   </div>
   <div class='col-sm-4'>
     <button id='add_members' name='<%=mygroup.name %>' val='<%=mygroup.id%>' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
