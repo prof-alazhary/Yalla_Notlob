@@ -13395,3 +13395,802 @@ Completed 200 OK in 159ms (Views: 118.0ms | ActiveRecord: 0.5ms)
 
 
 >>>>>>> UserFriendship
+Started GET "/" for 127.0.0.1 at 2017-04-04 05:26:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2017-04-04 03:26:29 UTC], ["last_sign_in_at", 2017-04-04 01:10:44 UTC], ["sign_in_count", 4], ["updated_at", 2017-04-04 03:26:29 UTC], ["id", 1]]
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[33mUser Store (39.4ms)[0m  {"id":1}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 3620ms (Views: 3521.8ms | Searchkick: 39.4ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-04 05:26:40 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 51ms (Views: 47.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-04 05:26:41 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered friends/index.html.erb within layouts/application (23.2ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 113ms (Views: 109.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1/groups" for 127.0.0.1 at 2017-04-04 05:26:42 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (43.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 181ms (Views: 125.8ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:26:51 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered orders/index.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 106ms (Views: 90.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 05:33:42 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (46.0ms)
+  Rendered orders/new.html.erb within layouts/application (49.0ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+Completed 200 OK in 182ms (Views: 140.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:38:46 +0200
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EtWqDHO/oebl4/o0f5lqE066+MIhm5nK19QwLPA3G+JJ5QGxAmRj+jzXjgmwzPNXjb1Mlu6rCaHyduVeSsQURA==", "order"=>{"meal"=>"form-control", "rest_name"=>"", "user_id"=>"1"}, "friends"=>"", "commit"=>"Add Order", "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "orders" ("meal", "rest_name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["meal", 0], ["rest_name", ""], ["user_id", 1], ["created_at", 2017-04-04 03:38:46 UTC], ["updated_at", 2017-04-04 03:38:46 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to 
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 2.7ms)
+
+
+  
+NoMethodError (undefined method `order_url' for #<OrdersController:0x007fc97cce8a40>):
+  
+app/controllers/orders_controller.rb:35:in `block (2 levels) in create'
+app/controllers/orders_controller.rb:33:in `create'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.7ms)
+Started GET "/" for 127.0.0.1 at 2017-04-04 05:43:49 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 117ms (Views: 87.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-04 05:43:51 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_navigation.html.erb (2.7ms)
+Completed 200 OK in 65ms (Views: 62.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/groups" for 127.0.0.1 at 2017-04-04 05:43:56 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 162ms (Views: 132.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:43:57 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered orders/index.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70251942652320'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70251942652320'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.5ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.6ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:44:05 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered orders/index.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70251977452840'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70251977452840'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.1ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:45:00 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered orders/index.html.erb within layouts/application (9.7ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 4.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70252030681500'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70252030681500'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.3ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:45:30 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (8.4ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 4.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70252017619760'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70252017619760'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.0ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:46:12 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <!-- <td><%= link_to 'Show', user_order_path %></td> -->
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70252043497280'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70252043497280'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.2ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:46:32 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>#<Order id: 1, meal: 0, rest_name: "", menu_img: nil, user_id: 1, created_at: "2017-04-04 03:38:46", updated_at: "2017-04-04 03:38:46">} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path(order) %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70251673753380'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70251673753380'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.2ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:48:15 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/index.html.erb:22: syntax error, unexpected [, expecting keyword_do or '{' or '('
+k_to 'Show', user_order_path [@user,order] );@output_buffer.
+                              ^):
+  
+app/views/orders/index.html.erb:22: syntax error, unexpected [, expecting keyword_do or '{' or '('
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.3ms)
+Started GET "/users/" for 127.0.0.1 at 2017-04-04 05:48:19 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mFriendship Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 76ms (Views: 71.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-04 05:48:23 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 43ms (Views: 39.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-04 05:48:25 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered friends/index.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_navigation.html.erb (3.4ms)
+Completed 200 OK in 94ms (Views: 90.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/groups" for 127.0.0.1 at 2017-04-04 05:48:25 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 67ms (Views: 42.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:48:26 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/index.html.erb:22: syntax error, unexpected [, expecting keyword_do or '{' or '('
+k_to 'Show', user_order_path [@user,order] );@output_buffer.
+                              ^):
+  
+app/views/orders/index.html.erb:22: syntax error, unexpected [, expecting keyword_do or '{' or '('
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.4ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.5ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:50:15 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>"1"} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70252030920620'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70252030920620'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.3ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:51:11 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"orders", :user_id=>#<Order id: 1, meal: 0, rest_name: "", menu_img: nil, user_id: 1, created_at: "2017-04-04 03:38:46", updated_at: "2017-04-04 03:38:46">} missing required keys: [:id]):
+    19:     <% @orders.each do |order| %>
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path(order) %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+  
+app/views/orders/index.html.erb:22:in `block in _app_views_orders_index_html_erb___4094262068458284659_70252023497080'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70252023497080'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.1ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.2ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:51:56 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"orders", :user_id=>#<Order id: 1, meal: 0, rest_name: "", menu_img: nil, user_id: 1, created_at: "2017-04-04 03:38:46", updated_at: "2017-04-04 03:38:46">} missing required keys: [:id]):
+    20:       <tr>
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path(id: order) %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+    26:     <% end %>
+  
+app/views/orders/index.html.erb:23:in `block in _app_views_orders_index_html_erb___4094262068458284659_70251943200760'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70251943200760'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.2ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.5ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:52:22 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (134.0ms)
+Completed 500 Internal Server Error in 142ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `order_path' for #<#<Class:0x007fc9a51c0f18>:0x007fc97cd50d48>):
+    21: 
+    22:         <td><%= link_to 'Show', user_order_path(id: order) %></td>
+    23:         <td><%= link_to 'Edit', edit_user_order_path(id: order) %></td>
+    24:         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    25:       </tr>
+    26:     <% end %>
+    27:   </tbody>
+  
+app/views/orders/index.html.erb:24:in `block in _app_views_orders_index_html_erb___4094262068458284659_70251679747000'
+app/views/orders/index.html.erb:19:in `_app_views_orders_index_html_erb___4094262068458284659_70251679747000'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.5ms)
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:54:11 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 47ms (Views: 43.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/orders" for 127.0.0.1 at 2017-04-04 05:55:24 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered orders/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 43ms (Views: 39.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 05:55:34 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (4.2ms)
+  Rendered orders/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 47ms (Views: 44.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 05:59:34 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (4.2ms)
+  Rendered orders/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 67ms (Views: 61.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:17:01 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (5.0ms)
+  Rendered orders/new.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 55ms (Views: 51.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:17:40 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (4.8ms)
+  Rendered orders/new.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+Completed 200 OK in 59ms (Views: 55.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:19:22 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (5.4ms)
+  Rendered orders/new.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 61ms (Views: 51.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:19:45 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (7.3ms)
+  Rendered orders/new.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 66ms (Views: 59.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:19:59 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (5.2ms)
+  Rendered orders/new.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 64ms (Views: 59.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:20:59 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (1.5ms)
+  Rendered orders/new.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected tIDENTIFIER, expecting ')'
+r.append=( f.label :meal value: "Type");@output_buffer.safe_
+                              ^):
+  
+app/views/orders/_form.html.erb:45: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/orders/new.html.erb:3:in `_app_views_orders_new_html_erb___3682211043410435538_70252016955060'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.2ms)
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:21:11 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (5.0ms)
+  Rendered orders/new.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 57ms (Views: 53.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:22:26 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (1.1ms)
+  Rendered orders/new.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+ppend=( f.label :meal , name :meal );@output_buffer.safe_app
+                              ^):
+  
+app/views/orders/_form.html.erb:45: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+app/views/orders/new.html.erb:3:in `_app_views_orders_new_html_erb___3682211043410435538_70252028600440'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.2ms)
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:22:39 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (4.5ms)
+  Rendered orders/new.html.erb within layouts/application (7.2ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+pend=( f.label :meal , {name :meal} );@output_buffer.safe_ap
+                              ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:63: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;         end 
+                     ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:86: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:88: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/orders/_form.html.erb:45: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+app/views/orders/_form.html.erb:63: syntax error, unexpected keyword_end, expecting ')'
+app/views/orders/_form.html.erb:86: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/orders/_form.html.erb:88: syntax error, unexpected keyword_end, expecting ')'
+app/views/orders/new.html.erb:3:in `_app_views_orders_new_html_erb___3682211043410435538_70251976755260'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.4ms)
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:23:41 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (6.4ms)
+  Rendered orders/new.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 55ms (Views: 50.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:27:35 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (1.7ms)
+  Rendered orders/new.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected ':'
+append=( f.label :meal {class: "control-label", value: "Type
+                              ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected ',', expecting '}'
+:meal {class: "control-label", value: "Type"});@output_buffe
+                              ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected '}', expecting ')'
+control-label", value: "Type"});@output_buffer.safe_append='
+                              ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:67: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;         end 
+                     ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:90: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:92: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/orders/_form.html.erb:45: syntax error, unexpected ':'
+append=( f.label :meal {class: "control-label", value: "Type
+app/views/orders/_form.html.erb:45: syntax error, unexpected ',', expecting '}'
+app/views/orders/_form.html.erb:45: syntax error, unexpected '}', expecting ')'
+app/views/orders/_form.html.erb:67: syntax error, unexpected keyword_end, expecting ')'
+app/views/orders/_form.html.erb:90: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/orders/_form.html.erb:92: syntax error, unexpected keyword_end, expecting ')'
+app/views/orders/new.html.erb:3:in `_app_views_orders_new_html_erb___3682211043410435538_70252029252880'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:27:50 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (1.6ms)
+  Rendered orders/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views/orders/_form.html.erb:45: syntax error, unexpected ':'
+append=( f.label :meal {class: "control-label"});@output_buf
+                              ^):
+  
+app/views/orders/_form.html.erb:45: syntax error, unexpected ':'
+append=( f.label :meal {class: "control-label"});@output_buf
+app/views/orders/new.html.erb:3:in `_app_views_orders_new_html_erb___3682211043410435538_33565820'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.5ms)
+Started GET "/users/1/orders/new" for 127.0.0.1 at 2017-04-04 06:28:00 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (4.1ms)
+  Rendered orders/new.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 54ms (Views: 49.1ms | ActiveRecord: 0.4ms)
+
+

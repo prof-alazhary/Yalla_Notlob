@@ -1,15 +1,4 @@
 <!-- <%= form_for [@user,@order] do |f| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :meal %>
@@ -40,23 +29,38 @@
         <h1>Add Order</h1>
         <%= form_for [@user,@order] do |f| %>
         <div class="errors">
+          <% if order.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
+              <ul>
+              <% order.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
         </div>
-        <%= f.label :meal, {class: "control-label", value: "For"}%>
-        <%= f.select :meal, class: "form-control" %>
+
+        <%= f.label :meal %>
+        <%= f.select :meal, {Breakfast: "Breakfast", Lunch: "Lunch" , Dinner: "Dinner"} %>
         <br>
+
         <%= f.label :rest_name, {class: "control-label", value: "From"}%>
         <%= f.text_field :rest_name, {class: "form-control",placeholder: "Write A resturant name"} %>
         <br>
+
         <label for="add-friend">Invite Friends</label>
         <input type="text" name="friends" id="invite_friend" class="form-control">
         <br>
+
         <%= f.label :menu_img, {class: "control-label", value: "Menu Image"}%>
         <%= f.file_field :menu_img %> <div id="file_name">
-
         </div>
         <br>
+
         <div id="invites-area"></div>
+
         <div id="groups-area"></div>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.submit "Add Order", {class: "btn btn-info", id: "submit"} %>
