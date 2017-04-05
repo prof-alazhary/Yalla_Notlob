@@ -1,6 +1,8 @@
   class User < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
+    acts_as_follower
+
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
     devise :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
@@ -18,6 +20,7 @@
     searchkick word_start: [:email, :name]
     has_many :orders
     has_many :order_details
+    has_many :groups
     has_and_belongs_to_many :groups
     #class_name: "User",join_table :friendships ,foreign_key:"user_id",association_foreign_key:"friend_user_id"
     #has_and_belongs_to_many :friends,class_name: "User",join_table:  :friendships,foreign_key: :user_id,association_foreign_key: :friend_user_id
