@@ -14,6 +14,22 @@ class GroupsController < ApplicationController
   def show
   end
 
+  def add_member
+    @user=current_user
+    @member = User.find_by email: params[:email]
+    @group = Group.find params[:g_id]
+    respond_to do |format|
+    if @member!=nil and @group!=nil
+      @member.follow(@group)
+        # format.html { redirect_to user_groups_path(@user,@group), notice: 'Hiiii from new Action.' }
+        format.json { render json: @member.to_json }
+    else
+        format.json { render json: (params[:email]).to_json }
+    end
+    end
+
+
+  end
   # GET /groups/new
   def new
     @user=current_user
@@ -28,14 +44,11 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @user=current_user
-    @group = @user.groups.new(group_params)
-
+    @group = @user.groups.new({:name => params[:name], :user_id => params[:user_id]})
     respond_to do |format|
       if @group.save
-        format.html { redirect_to user_groups_path(@user,@group), notice: 'Group was successfully created.' }
-        # format.json { render :show, status: :created, location: @group }
+        format.json { render json: Group.last.to_json }
       else
-        format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
