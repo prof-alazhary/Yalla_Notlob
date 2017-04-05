@@ -21,13 +21,25 @@ class GroupsController < ApplicationController
     respond_to do |format|
     if @member!=nil and @group!=nil
       @member.follow(@group)
-        # format.html { redirect_to user_groups_path(@user,@group), notice: 'Hiiii from new Action.' }
         format.json { render json: @member.to_json }
     else
         format.json { render json: (params[:email]).to_json }
     end
     end
+  end
 
+  def get_all_members
+    require "json"
+    @group = Group.find params[:g_id]
+    @members=@group.followers
+    @data={"members": @members}
+    respond_to do |format|
+    if @members!=nil and @group!=nil
+        format.json { render json: @data.to_json }
+    else
+        format.json { render json: ('something wrong!').to_json }
+    end
+    end
 
   end
   # GET /groups/new
