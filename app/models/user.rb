@@ -15,7 +15,7 @@
      user.password = Devise.friendly_token[0,20]
       end
     end
-    searchkick word_start: [:email, :name]
+    # searchkick word_start: [:email, :name]
     has_many :orders
     has_many :order_details
     has_many :groups

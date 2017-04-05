@@ -15,6 +15,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-//= require bloodhound
-
-//= require typeahead.jquery.js

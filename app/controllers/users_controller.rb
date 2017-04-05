@@ -12,11 +12,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def autocomplete
-    render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
-      { name: user.name, value: user.id }
-    end
-  end
+  # def autocomplete
+  #   render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
+  #     { name: user.name, value: user.id }
+  #   end
+  # end
 
   # GET /users/1
   # GET /users/1.json
