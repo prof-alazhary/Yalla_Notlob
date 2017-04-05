@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="page-header">
+  <h1>Groups</h1>
+</div>
+</div>
+
+
+<div class="container">
+<div class="text-center">
+<div class="row">
+<div class="col-sm-12">
+
+
+  <%= form_for ([@user,@group]) do |f| %>
+
+  <div class="form-group">
+    <h5><%= f.label :group %></h5>
+    <%= f.text_field :name, class: "form-control", placeholder: "Group Name" %>
+<!--  <%= f.hidden_field :user_id ,value: @user.id %> -->
+  </div>
+     <%= f.submit "Add Grouppp", id: "addGroup" ,class: 'btn btn-default' %>
+</div>
+</div>
+
+</div>
+<% end %><br/>
+<div class="row">
+<div class="col-sm-4">
+<div class="panel panel-default">
+<div class="panel-heading">
+  <div class="container">
+
+    <h4>My Groups</h4>
+</div>
+<div id="allGroups" class="panel-body">
+  <% @groups.each do |mygroup| %>
+  <% if @user.id== mygroup.user_id %>
+  <div id='group_row' class="row">
+    <div class='col-sm-4'>
+    <a href='#' ><%=mygroup.name %> </a>
+  </div>
+  <div class='col-sm-4'>
+    <button id='add_members' name='<%=mygroup.name %>' val='<%=mygroup.id%>' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
+  </div>
+  <div class='col-sm-4'>
+    <button id='delete_group' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
+  </div>
+  </div>
+
+<br/>
+<% end %>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="col-sm-7">
+<div class="panel panel-info">
+<div class="panel-heading">
+  <div class="container">
+
+    <h4 id='g_title' val='0'>Group Name</h4>
+</div>
+</div>
+<div id='group' class="panel-body">
+  <div class="row">
+    <div class="col-sm-12">
+    <label>Your Friend Name </label>
+    <input type="text" id='friend_email' name="" value="">
+    <button type="button" id='addFriend' name="button">add</button>
+   </div>
+ </div>
+
+    <div  class="">
+      <div id='members' class="row">
+          <div class="col-sm-3">
+          <h4>Someone</h4>
+          <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
+        <br/>
+            <br>
+            <%= link_to '#',:class => 'btn btn-danger' do %>
+              <i class="icon-remove icon-white"></i>
+              UnFriend
+            <% end %><p></p>
+            </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+</div>
