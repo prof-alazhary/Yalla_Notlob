@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  # GET /groups/1
-  # GET /groups/1.json
+  # @user.all_following
+
   def show
   end
 
