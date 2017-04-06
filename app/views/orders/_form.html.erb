@@ -37,22 +37,11 @@
 
     <div id="groups-area"></div>
     <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <!--<input type="hidden" name="order[friends[]]" value="2">
-    <input type="hidden" name="order[friends[]]" value="3">
-    <input type="hidden" name="order[friends[]]" value="4">
-    <input type="hidden" name="order[friends[]]" value="5">-->
-    <select name="order[friends[]]" class="" >
-      <option value="1"></option>
-      <option value="2"></option>
-      <option value="3"></option>
-    </select>
     <%= f.submit "Add Order", {class: "btn btn-info", id: "submit"} %>
     <% end %>
   </div>
   <div class="col-sm-4">
-    <!-- <h1>Friends Invited</h1>
-    <div id="friends-invited"></div> -->
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="container">
@@ -60,7 +49,7 @@
         </div>
       </div>
       <div class="panel-body" id="frindesPanelBody">
-        <div class="row">
+        <div id='friends' class="row">
           <div class="col-sm-3">
             <h4>Someone</h4>
             <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>

@@ -29,8 +29,8 @@ $(function () {
   });
 
   $('#allGroups').on('click', 'button' ,function (e) {
-    group_name=$(e.target).attr('name')
-    group_id=$(e.target).attr('val')
+    var group_name=$(e.target).attr('name')
+    var group_id=$(e.target).attr('val')
     if($(e.target).attr('id')=='add_members') {
         $('#g_title').text(group_name);
         $('#g_title').attr('val',group_id);
