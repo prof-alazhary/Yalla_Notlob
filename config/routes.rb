@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
 
- resources :friendships
+  get 'notifications/index'
 
+ resources :friendships
+   resources :notifications
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :friends
