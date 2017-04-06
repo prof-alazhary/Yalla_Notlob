@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    # @order = Order.new(order_params)
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
 
