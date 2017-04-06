@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
     # @order = Order.new(order_params)
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
-    byebug
 
     respond_to do |format|
       if @order.save
