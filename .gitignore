@@ -25,6 +25,9 @@ pickle-email-*.html
 # Configs
 /config/database.yml
 
+#logs
+/log/development.log
+
 # Ignore all logfiles and tempfiles.
 /log
 /tmp
