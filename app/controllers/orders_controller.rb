@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
     # @order = Order.new(order_params)
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
+    byebug
 
     respond_to do |format|
       if @order.save
@@ -73,6 +74,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:meal, :rest_name, :menu_img, :user_id)
+      params.require(:order).permit(:meal, :rest_name, :menu_img, :menu_img, :menu_img_cache, :user_id)
     end
 end
