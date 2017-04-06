@@ -26,12 +26,13 @@ $(function(){
               }else {
                 alert(result+" not valid email!");
               }
-              $(this).val('')
+              //$(this).val('')
             },
             error: function(error) {
               alert(error);
            }
-        });
+        });//end ajax method
+        $(this).val('')
       }
   })
 
