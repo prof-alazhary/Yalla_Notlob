@@ -28,8 +28,6 @@ class OrdersController < ApplicationController
   def create
     # @order = Order.new(order_params)
     @user=User.find params[:user_id]
-    # order_params.inspect
-     byebug
     # @order = @user.orders.new(order_params)
 
     respond_to do |format|

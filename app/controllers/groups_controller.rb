@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
     @user=current_user
     @groups = Group.all
     @group = Group.new
+    # byebug
   end
 
   # @user.all_following
@@ -19,12 +20,12 @@ class GroupsController < ApplicationController
     @member = User.find_by email: params[:email]
     @group = Group.find params[:g_id]
     respond_to do |format|
-    if @member!=nil and @group!=nil
-      @member.follow(@group)
-        format.json { render json: @member.to_json }
-    else
-        format.json { render json: (params[:email]).to_json }
-    end
+      if @member!=nil and @group!=nil and @user.friends.include? @member
+          @member.follow(@group)
+          format.json { render json: @member.to_json }
+      else
+          format.json { render json: (params[:email]).to_json }
+      end
     end
   end
 
@@ -85,8 +86,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: "Deleted success.."}
     end
   end
 
