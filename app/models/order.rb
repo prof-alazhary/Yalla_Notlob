@@ -8,6 +8,6 @@ class Order < ApplicationRecord
   private
 
   def notify
-    Notification.create(event: "New Order")
+    Notification.create(event: "new Order")
   end
 end
