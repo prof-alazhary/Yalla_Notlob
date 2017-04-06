@@ -9,8 +9,8 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 gem 'mysql2'
+# gem 'pg'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
-#gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -26,8 +26,8 @@ gem 'simple_form', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3'
 
 #autocomplete
-gem 'searchkick'
-gem 'rails4-autocomplete'
+# gem 'searchkick'
+# gem 'rails4-autocomplete'
 
 #SocialMediaAPI
 gem 'omniauth-facebook'

@@ -9,51 +9,49 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Order Details</h1>
-<div class="container">
-<div class="row">
-  <div class="col-sm-4">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Person</th>
+  <h1>Order Details</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Person</th>
+              <th>Item</th>
+              <th>Amount</th>
+              <th>Price</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
 
-      <th>Item</th>
-      <th>Amount</th>
-      <th>Price</th>
-      <th>Comment</th>
+          <tbody>
+            <tr>
 
-    </tr>
-  </thead>
+              <td>Someone</td>
+              <td>anything</td>
+              <td>10</td>
+              <td>2</td>
+              <td>anything</td>
 
-  <tbody>
-    <!-- <% @order_details.each do |order_detail| %> -->
-      <tr>
+            </tr>
+            <% @order_details.each do |order_detail| %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <a href="#" data-toggle="modal" data-target="#myModal">10 friends invited,click to view</a>
+          </div>
+          <a href="#">10 friends joined ,click to view</a>
+        </div>
+      </div>
 
-        <td>Someone</td>
-        <td>anything</td>
-        <td>10</td>
-        <td>2</td>
-        <td>anything</td>
-
-      </tr>
-    <!-- <% end %> -->
-  </tbody>
-</table>
-</div>
-<div class="col-sm-6">
-<div class="row">
-  <div class="col-sm-12">
-<a href="#" data-toggle="modal" data-target="#myModal">10 friends invited,click to view</a>
-</div>
-<a href="#">10 friends joined ,click to view</a>
-</div>
-</div>
-
-</div>
-<%= render 'form', order_detail: @order_detail %>
-</div>
-<!-- Modal -->
+    </div>
+    <% render 'form', order_detail: @order_details.new %>
+  </div>
+  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
@@ -64,48 +62,48 @@
           <h4 class="modal-title">Yalla_Notlob</h4>
         </div>
         <!-- <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div> -->
+        <p>Some text in the modal.</p>
+      </div> -->
 
-        <div class="row">
+      <div class="row">
 
-          <div class="col-sm-6">
+        <div class="col-sm-6">
           <h4>Someone</h4>
           <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
-
-        <br/>
-
-
-            <br>
-            <%= link_to '#',:class => 'btn btn-danger' do %>
-              <i class="icon-remove icon-white"></i>
-
-              UnFriend
-            <% end %><p></p>
-            </div>
-            <div class="col-sm-6">
-            <h4>Someone</h4>
-            <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
 
           <br/>
 
 
-              <br>
-              <%= link_to '#',:class => 'btn btn-danger' do %>
-                <i class="icon-remove icon-white"></i>
+          <br>
+          <%= link_to '#',:class => 'btn btn-danger' do %>
+          <i class="icon-remove icon-white"></i>
 
-                UnFriend
-              <% end %><p></p>
-              </div>
+          UnFriend
+          <% end %><p></p>
         </div>
+        <div class="col-sm-6">
+          <h4>Someone</h4>
+          <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <br/>
+
+
+          <br>
+          <%= link_to '#',:class => 'btn btn-danger' do %>
+          <i class="icon-remove icon-white"></i>
+
+          UnFriend
+          <% end %><p></p>
         </div>
       </div>
 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
+
   </div>
+</div>
 
 <br>
 </body>

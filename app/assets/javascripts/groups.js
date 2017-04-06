@@ -1,7 +1,7 @@
 $(function () {
 
   $("#addGroup").click(function(e){
-    e.preventDefault();
+    console.log("i am heeer");
     g_name=$("#group_name").val();
       $.ajax({
         url: "/users/1/groups",
@@ -17,7 +17,7 @@ $(function () {
           <button id='add_members' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
         </div>
         <div class='col-sm-4'>
-          <button id='delete_group' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
+          <button id='delete_group' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
         </div>
         </div>
         <br/>`)
@@ -29,15 +29,16 @@ $(function () {
   });
 
   $('#allGroups').on('click', 'button' ,function (e) {
-
+    var group_name=$(e.target).attr('name')
+    var group_id=$(e.target).attr('val')
     if($(e.target).attr('id')=='add_members') {
-        $('#g_title').text($(e.target).attr('name'));
-        $('#g_title').attr('val',$(e.target).attr('val'));
+        $('#g_title').text(group_name);
+        $('#g_title').attr('val',group_id);
         $('#members').empty();
         $.ajax({
           url: '/get_all_members',
           method: 'post',
-          data: {g_id: $(e.target).attr('val') },
+          data: {g_id: group_id },
           success: function (result) {
             console.log(result);
             result.members.forEach(function (item) {
@@ -64,6 +65,16 @@ $(function () {
         $('#members').empty();
         $('#g_title').text('sellect Group');
         $('#g_title').attr('val','0');
+        $.ajax({
+          url: '/users/1/groups/'+group_id+'',
+          method: 'DELETE',
+          success: function (result) {
+            console.log(result);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        })
     }
   })
 

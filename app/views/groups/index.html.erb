@@ -10,20 +10,16 @@
 <div class="row">
 <div class="col-sm-12">
 
-
-  <%= form_for ([@user,@group]) do |f| %>
-
   <div class="form-group">
-    <h5><%= f.label :group %></h5>
-    <%= f.text_field :name, class: "form-control", placeholder: "Group Name" %>
-<!--  <%= f.hidden_field :user_id ,value: @user.id %> -->
+    <label for="">group</label>
+    <input class="form-control" placeholder="Group Name" type="text" id="group_name">
   </div>
-     <%= f.submit "Add Grouppp", id: "addGroup" ,class: 'btn btn-default' %>
+     <button id="addGroup" type="button" name="button">Add Grouppp</button>
 </div>
 </div>
 
 </div>
-<% end %><br/>
+<br/>
 <div class="row">
 <div class="col-sm-4">
 <div class="panel panel-default">
@@ -43,7 +39,7 @@
     <button id='add_members' name='<%=mygroup.name %>' val='<%=mygroup.id%>' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
   </div>
   <div class='col-sm-4'>
-    <button id='delete_group' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
+    <button id='delete_group' name='<%=mygroup.name %>' val='<%=mygroup.id%>' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
   </div>
   </div>
 

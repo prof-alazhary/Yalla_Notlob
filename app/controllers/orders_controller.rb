@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = current_user.orders.all
   end
 
   # GET /orders/1
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     # @order = Order.new
-    @user=User.find params[:user_id]
+    @user=current_user
     @order = @user.orders.new
   end
 
@@ -28,11 +28,11 @@ class OrdersController < ApplicationController
   def create
     # @order = Order.new(order_params)
     @user=User.find params[:user_id]
-    @order = @user.orders.new(order_params)
+    # @order = @user.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to user_orders_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -45,11 +45,11 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+      if @order.update({status: false})
+        format.html { redirect_to user_orders_path, notice: 'Order was successfully marked as Finished.' }
         format.json { render :show, status: :ok, location: @order }
       else
-        format.html { render :edit }
+        format.html { render :index }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to user_orders_path, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:meal, :rest_name, :menu_img, :user_id)
+      params.require(:order).permit(:meal, :rest_name, :menu_img, :user_id, friends[])
     end
 end

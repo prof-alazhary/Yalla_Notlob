@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :users do
     collection do
-      get :autocomplete
+      # get :autocomplete
     end
       resources :orders do
             resources :order_details
@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   post '/add_member' => 'groups#add_member'
   post '/get_all_members' => 'groups#get_all_members'
+  # invite_friend
+  post '/invite_friend' => 'friends#invite_friend'
+
 end
