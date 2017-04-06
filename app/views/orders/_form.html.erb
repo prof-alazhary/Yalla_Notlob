@@ -37,6 +37,16 @@
 
     <div id="groups-area"></div>
     <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <!--<input type="hidden" name="order[friends[]]" value="2">
+    <input type="hidden" name="order[friends[]]" value="3">
+    <input type="hidden" name="order[friends[]]" value="4">
+    <input type="hidden" name="order[friends[]]" value="5">-->
+    <select name="order[friends[]]" class="" >
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option>
+    </select>
     <%= f.submit "Add Order", {class: "btn btn-info", id: "submit"} %>
     <% end %>
   </div>

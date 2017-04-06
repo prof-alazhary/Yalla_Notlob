@@ -9,7 +9,7 @@ User.create(
 [
 	{ name: 'Hager', email: "hager@g.com", password: "123123" },
 	{ name: 'islam', email: "islam@g.com", password: "123123" },
-	{ name: 'mohamed', email: "mohamed@g.com", password: "123123" },
+	{ name: 'mohamed', email: "azhary@g.com", password: "123123" },
 	{ name: 'ali', email: "ali@g.com", password: "123123" },
 	{ name: 'ata', email: "ata@g.com", password: "123123" },
 	])
