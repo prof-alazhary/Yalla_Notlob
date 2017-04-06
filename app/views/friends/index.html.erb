@@ -16,9 +16,9 @@
   <div class="form-group">
 
 
-<%= form_tag users_path , method: :get do %>
-<%= text_field_tag :query, params[:query], class: 'form-control mr-sm-2 typeahead', id: "typeahead" %>
-<%= submit_tag "Search" %>
+<%= form_for users_path , method: :get do |f|%>
+<%= f.text_field :email  %>
+<%= f.submit "Search" %>
 <% end %>
 </div>
 </div>
