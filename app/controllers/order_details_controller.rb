@@ -4,7 +4,8 @@ class OrderDetailsController < ApplicationController
   # GET /order_details
   # GET /order_details.json
   def index
-    @order_details = OrderDetail.all
+    @order = Order.find(params[:order_id])
+    @order_details = @order.order_details.all
   end
 
   # GET /order_details/1

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :users do
     collection do
-      get :autocomplete
+      # get :autocomplete
     end
       resources :orders do
             resources :order_details

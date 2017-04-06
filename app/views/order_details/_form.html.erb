@@ -1,4 +1,4 @@
-<%= form_for(order_detail) do |f| %>
+<% form_for new_user_order_order_detail_path([@order,order_detail]) do |f| %>
   <% if order_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order_detail.errors.count, "error") %> prohibited this order_detail from being saved:</h2>
