@@ -1,0 +1,19 @@
+<ul class="notificator">
+  <a href="#" id="open_notification">
+    <i class="glyphicon glyphicon-bell notification-icon"></i>
+    <span  id="notification-counter"><%= current_user.follows_by_type('Order').count %></span>
+  </a>
+  <div id="notificationContainer">
+    <div id="notificationTitle">Notifications</div>
+    <div id="notificationsBody" class="notifications">
+      <ul id="notificationList">
+        <% current_user.follows_by_type('Order').each do |notification|  %>
+          <li>
+            <%= Order.find(notification.followable_id) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="notificationFooter"></div>
+  </div>
+</ul>
