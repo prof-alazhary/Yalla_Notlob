@@ -15,10 +15,18 @@
 
   <div class="form-group">
 
-
-<%= form_for users_path , method: :get do |f|%>
-<%= f.text_field :email  %>
-<%= f.submit "Search" %>
+<!--
+# <%= form_for users_path , method: :get do |f|%>
+# <%= f.text_field :email  %>
+# <%= f.submit "Search" %>
+# <% end %> -->
+<%= form_tag users_path, method: :get, class: 'navbar-form navbar-left' do %>
+   <div class='form-group'>
+     <%= text_field_tag :query, params[:query], id: "navbar-search-input", class: 'form-control', placeholder: 'Friend Name.....' %>
+   </div>
+   <%= button_tag(type: 'submit', id: 'navbar-search-btn', class: 'btn btn-default') do %>
+     <i class='fa fa-search fa-fw'></i> Search
+   <% end %>
 <% end %>
 </div>
 </div>
