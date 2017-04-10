@@ -1,4 +1,5 @@
-$(function () {
+var ready;
+ready = function () {
 
   $("#addGroup").click(function(e){
     console.log("i am heeer");
@@ -6,7 +7,7 @@ $(function () {
       $.ajax({
         url: "/users/1/groups",
         method: "post",
-        data: {name: g_name},
+        data: {name: g_name.trim()},
         success: function(result){
           console.log(result)
           $("#allGroups").prepend(`<div id='group_row' class='row'>
@@ -84,7 +85,7 @@ $(function () {
       $.ajax({
         url: "/add_member",
         method: "post",
-        data: {email: $('#friend_email').val(), g_id: $('#g_title').attr('val') },
+        data: {email: $('#friend_email').val().trim(), g_id: $('#g_title').attr('val') },
         success: function(result){
           if (result.name!=undefined) {
             console.log(result);
@@ -111,5 +112,7 @@ $(function () {
     });
 
   })
-
-})
+}
+////////////////////////////////////////////////////////
+$(document).ready(ready);
+$(document).on('page:load', ready);
