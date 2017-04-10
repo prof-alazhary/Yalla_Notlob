@@ -8,9 +8,9 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<li>
-							  <span> <%# notification.created_at.strftime("%d %b. %Y") %></span>
-							</li>
+							<% current_user.orders.each do |order|  %>
+								<%=link_to(order.meal + " on " + order.created_at.strftime("%d %b. %Y") , user_order_order_details_path(user_id: current_user, order_id: order)) %><br>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -26,6 +26,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
+							
 						</div>
 					</div>
 				</div>
