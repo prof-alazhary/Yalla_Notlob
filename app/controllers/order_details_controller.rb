@@ -1,11 +1,12 @@
 class OrderDetailsController < ApplicationController
   before_action :set_order_detail, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   # GET /order_details
   # GET /order_details.json
   def index
     @order = Order.find(params[:order_id])
-    @order_details = @order.order_details.all
+    @order_details = @order.order_details
   end
 
   # GET /order_details/1
@@ -25,14 +26,12 @@ class OrderDetailsController < ApplicationController
   # POST /order_details
   # POST /order_details.json
   def create
-    @order_detail = OrderDetail.new(order_detail_params)
-
+    @order_detail = OrderDetail.new({user_id: params[:user_id], order_id: params[:order_id], item: params[:item], price: params[:price], amount: params[:amount], comment: params[:comment]})
     respond_to do |format|
       if @order_detail.save
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
-        format.json { render :show, status: :created, location: @order_detail }
+        data={"order": @order_detail} ; data['user_name']=@order_detail.user.name
+        format.json { render json: data.to_json }
       else
-        format.html { render :new }
         format.json { render json: @order_detail.errors, status: :unprocessable_entity }
       end
     end

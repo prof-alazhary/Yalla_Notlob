@@ -1,8 +1,8 @@
-$(document).ready(function()
+$(function()
 {
   $('#invite_friend').keyup(function (e) {
       if (e.keyCode==32) {
-          console.log($(this).val())
+          console.log("e.keyCode==32")
           $.ajax({
             url: "/invite_friend",
             method: "post",
@@ -16,7 +16,7 @@ $(document).ready(function()
                     <img src="`+result.img+`" width="80px" height="80px" class="img-thumbnail"/>
                   <br/>
                       <br>
-                      <a val=`+result.id+` href="" class='btn btn-danger'>
+                      <a val=`+result.id+` href="#" class='btn btn-danger'>
                       <i class="icon-remove icon-white"></i>
                       remove
                       </a>
