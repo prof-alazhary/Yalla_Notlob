@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   private
 
   def notify
-    Notification.create(event: "New Order")
+    msg = User.find(self.user_id).name + "has created an Order for " + self.meal + " from " + self.rest_name
+    Notification.create(event: msg)
   end
 end
