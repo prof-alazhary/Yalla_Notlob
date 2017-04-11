@@ -34,9 +34,12 @@ class OrdersController < ApplicationController
 
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
-
     respond_to do |format|
       if @order.save
+        friends_ids = params['order']['friends']
+        friends_ids.each do |friend_id|
+          User.find(friend_id).follow @order
+        end
         format.html { redirect_to user_orders_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -76,7 +79,11 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> origin/development
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:meal, :rest_name, :menu_img, :menu_img, :menu_img_cache, :user_id)

@@ -1,0 +1,23 @@
+<ul class="notificator">
+  <a href="#" id="open_notification">
+    <i class="glyphicon glyphicon-bell notification-icon"></i>
+    <span  id="notification-counter"><%= current_user.follows_by_type('Order').count %></span>
+  </a>
+  <div id="notificationContainer">
+    <div id="notificationTitle">Notifications</div>
+    <div id="notificationsBody" class="notifications">
+      <ul id="notificationList">
+        <%if current_user.follows_by_type('Order') %>
+          <% current_user.follows_by_type('Order').each do |orderFollowable|  %>
+          <li>
+            <% order = Order.find(orderFollowable.followable_id) %>
+            <%= User.find(order.user_id).name + " invited you to his order " %>
+            <%= link_to('join',user_order_order_details_path(user_id: order.user_id, order_id: order)) %>
+          </li>
+          <% end %>
+        <%end%>
+      </ul>
+    </div>
+    <div id="notificationFooter"></div>
+  </div>
+</ul>
