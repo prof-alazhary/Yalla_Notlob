@@ -9047,3 +9047,53 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 76ms (Views: 70.2ms | ActiveRecord: 3.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:16:00 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (9.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (17.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered home/index.html.erb within layouts/application (114.0ms)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 2], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 2], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (16.3ms)
+  Rendered layouts/_navigation.html.erb (23.1ms)
+Completed 500 Internal Server Error in 4321ms (ActiveRecord: 98.6ms)
+
+
+  
+ActionView::Template::Error (Missing partial notifications/_notification_center with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/views"
+  * "/home/islam/.rvm/gems/ruby-2.4.0/gems/devise-4.2.1/app/views"
+):
+    36: 
+    37:           <%= render "layouts/notification_center" %>
+    38: 
+    39:           <%= render "notifications/notification_center", notifications: @notifications %>
+    40: 
+    41:           <li><%= link_to 'Logout', destroy_user_session_path,method: :delete %></li>
+    42:           <li><%= %></li>
+  
+app/views/layouts/_navigation.html.erb:39:in `_app_views_layouts__navigation_html_erb__619583172064705422_70228324600740'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___3404207966651070713_30387300'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.2ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.8ms)
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:17:15 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 2], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 2], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.4ms)
+  Rendered layouts/_navigation.html.erb (5.4ms)
+Completed 200 OK in 225ms (Views: 222.0ms | ActiveRecord: 1.1ms)
+
+

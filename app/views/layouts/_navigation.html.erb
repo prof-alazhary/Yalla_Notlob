@@ -33,11 +33,7 @@
           &nbsp; &nbsp;
           <li>  <img src="<%= current_user.avatar %>" height="50px" width="50px"/></li>
           &nbsp; &nbsp;
-
           <%= render "layouts/notification_center" %>
-
-          <%= render "notifications/notification_center", notifications: @notifications %>
-
           <li><%= link_to 'Logout', destroy_user_session_path,method: :delete %></li>
           <li><%= %></li>
           <!-- The block ends here -->
