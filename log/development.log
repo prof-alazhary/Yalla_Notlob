@@ -9494,3 +9494,561 @@ app/controllers/orders_controller.rb:82: syntax error, unexpected <<, expecting 
   Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
   Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.8ms)
+Started GET "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:25:24 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 3.4ms)
+
+
+  
+NameError (uninitialized constant OrdersController::Notification):
+  
+app/controllers/orders_controller.rb:7:in `index'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.0ms)
+Started GET "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:26:31 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (1.9ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (11.1ms)
+  Rendered layouts/_navigation.html.erb (13.0ms)
+Completed 200 OK in 558ms (Views: 515.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:26:36 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered home/index.html.erb within layouts/application (5.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (4.3ms)
+  Rendered layouts/_navigation.html.erb (6.8ms)
+Completed 200 OK in 224ms (Views: 220.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-11 18:26:37 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered friends/index.html.erb within layouts/application (36.4ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (7.1ms)
+  Rendered layouts/_navigation.html.erb (10.0ms)
+Completed 200 OK in 272ms (Views: 263.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/users/6/groups" for 127.0.0.1 at 2017-04-11 18:26:42 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (3.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (4.7ms)
+  Rendered layouts/_navigation.html.erb (7.4ms)
+Completed 200 OK in 383ms (Views: 354.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-11 18:26:44 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered friends/index.html.erb within layouts/application (12.3ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (5.2ms)
+  Rendered layouts/_navigation.html.erb (8.3ms)
+Completed 200 OK in 252ms (Views: 247.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users?utf8=%E2%9C%93&query=&button=" for 127.0.0.1 at 2017-04-11 18:26:47 +0200
+Processing by UsersController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mFriendship Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 1], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 3], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Load (0.3ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1 AND (friend_id = 3 AND user_id = 6) ORDER BY "friendships"."id" ASC LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 5], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1 AND (friend_id = 5 AND user_id = 6) ORDER BY "friendships"."id" ASC LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 2], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1 AND (friend_id = 2 AND user_id = 6) ORDER BY "friendships"."id" ASC LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 4], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Load (0.3ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1 AND (friend_id = 4 AND user_id = 6) ORDER BY "friendships"."id" ASC LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mFriendship Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."user_id" = $3 LIMIT $4[0m  [["user_id", 6], ["friend_id", 6], ["user_id", 6], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (28.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.5ms)
+  Rendered layouts/_navigation.html.erb (5.4ms)
+Completed 200 OK in 304ms (Views: 297.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/users/6/groups" for 127.0.0.1 at 2017-04-11 18:26:50 +0200
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (3.1ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (5.4ms)
+  Rendered layouts/_navigation.html.erb (7.3ms)
+Completed 200 OK in 229ms (Views: 224.6ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users/1/groups" for 127.0.0.1 at 2017-04-11 18:26:56 +0200
+Processing by GroupsController#create as */*
+  Parameters: {"name"=>"iti", "user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "groups" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "iti"], ["user_id", 6], ["created_at", 2017-04-11 16:26:56 UTC], ["updated_at", 2017-04-11 16:26:56 UTC]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" ORDER BY "groups"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/get_all_members" for 127.0.0.1 at 2017-04-11 18:26:58 +0200
+Processing by GroupsController#get_all_members as */*
+  Parameters: {"g_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFollow Load (23.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followable_id" = $1 AND "follows"."followable_type" = $2 AND "follows"."blocked" = $3[0m  [["followable_id", 1], ["followable_type", "Group"], ["blocked", false]]
+Completed 200 OK in 32ms (Views: 0.1ms | ActiveRecord: 23.8ms)
+
+
+Started POST "/add_member" for 127.0.0.1 at 2017-04-11 18:27:04 +0200
+Processing by GroupsController#add_member as */*
+  Parameters: {"email"=>"ali@g.com", "g_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ali@g.com"], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 4], ["LIMIT", 1]]
+DEPRECATION WARNING: Setting custom parent classes is deprecated and will be removed in future versions. (called from parent_class_name at /home/islam/.rvm/gems/ruby-2.4.0/bundler/gems/acts_as_follower-c5ac7b9601c4/lib/acts_as_follower/follower_lib.rb:10)
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT  "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."followable_id" = $3 AND "follows"."followable_type" = $4 ORDER BY "follows"."id" ASC LIMIT $5[0m  [["follower_id", 4], ["follower_type", "User"], ["followable_id", 1], ["followable_type", "Group"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "follows" ("followable_type", "followable_id", "follower_type", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["followable_type", "Group"], ["followable_id", 1], ["follower_type", "User"], ["follower_id", 4], ["created_at", 2017-04-11 16:27:04 UTC], ["updated_at", 2017-04-11 16:27:04 UTC]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 33ms (Views: 0.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/6/null" for 127.0.0.1 at 2017-04-11 18:27:05 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/6/null"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered collection of /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [81 times] (21.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (79.5ms)
+Started GET "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:27:07 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (1.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.6ms)
+  Rendered layouts/_navigation.html.erb (5.5ms)
+Completed 200 OK in 239ms (Views: 234.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/6/orders/new" for 127.0.0.1 at 2017-04-11 18:27:11 +0200
+Processing by OrdersController#new as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (16.2ms)
+  Rendered orders/new.html.erb within layouts/application (17.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (4.0ms)
+  Rendered layouts/_navigation.html.erb (5.9ms)
+Completed 200 OK in 302ms (Views: 289.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/invite_friend" for 127.0.0.1 at 2017-04-11 18:27:21 +0200
+Processing by FriendsController#invite_friend as */*
+  Parameters: {"email"=>"ali@g.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ali@g.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 4], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/6/orders/null" for 127.0.0.1 at 2017-04-11 18:27:21 +0200
+Processing by OrdersController#show as */*
+  Parameters: {"user_id"=>"6", "id"=>"null"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Order with 'id'=null):
+  
+app/controllers/orders_controller.rb:73:in `set_order'
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.1ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/islam/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.9ms)
+Started POST "/invite_friend" for 127.0.0.1 at 2017-04-11 18:27:25 +0200
+Processing by FriendsController#invite_friend as */*
+  Parameters: {"email"=>"hager@g.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hager@g.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:27:29 +0200
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UKC9f5lhT7h0ATkazodvWa96n/UvKLKi3W39hZ75Tr6PL3+zq4HehbR/xu5qbp5aGSWHs6BQKYVI/8IljnkqDw==", "order"=>{"meal"=>"Breakfast", "rest_name"=>"Gad", "menu_img_cache"=>"", "user_id"=>"6", "friends"=>["4"]}, "friends"=>"", "commit"=>"Add Order", "user_id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Unpermitted parameter: friends
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.3ms)[0m  [1m[32mINSERT INTO "orders" ("meal", "rest_name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["meal", "Breakfast"], ["rest_name", "Gad"], ["user_id", 6], ["created_at", 2017-04-11 16:27:30 UTC], ["updated_at", 2017-04-11 16:27:30 UTC]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+DEPRECATION WARNING: Setting custom parent classes is deprecated and will be removed in future versions. (called from parent_class_name at /home/islam/.rvm/gems/ruby-2.4.0/bundler/gems/acts_as_follower-c5ac7b9601c4/lib/acts_as_follower/follower_lib.rb:10)
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT  "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."followable_id" = $3 AND "follows"."followable_type" = $4 ORDER BY "follows"."id" ASC LIMIT $5[0m  [["follower_id", 4], ["follower_type", "User"], ["followable_id", 5], ["followable_type", "Order"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "follows" ("followable_type", "followable_id", "follower_type", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["followable_type", "Order"], ["followable_id", 5], ["follower_type", "User"], ["follower_id", 4], ["created_at", 2017-04-11 16:27:30 UTC], ["updated_at", 2017-04-11 16:27:30 UTC]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6/orders
+Completed 302 Found in 49ms (ActiveRecord: 35.0ms)
+
+
+Started GET "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:27:30 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (2.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.5ms)
+  Rendered layouts/_navigation.html.erb (5.5ms)
+Completed 200 OK in 229ms (Views: 225.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:27:36 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.5ms)
+  Rendered layouts/_navigation.html.erb (5.4ms)
+Completed 200 OK in 295ms (Views: 290.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/6/orders/5/order_details" for 127.0.0.1 at 2017-04-11 18:27:39 +0200
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:OrderDetailsController> at /mnt/My Data/Mine/ITI/Ruby on Rails/Yalla_Notlob/app/controllers/order_details_controller.rb:3)
+Processing by OrderDetailsController#index as HTML
+  Parameters: {"user_id"=>"6", "order_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering order_details/index.html.erb within layouts/application
+  [1m[36mOrderDetail Load (0.6ms)[0m  [1m[34mSELECT "order_details".* FROM "order_details" WHERE "order_details"."order_id" = $1[0m  [["order_id", 5]]
+  Rendered order_details/_form.html.erb (0.6ms)
+  Rendered order_details/index.html.erb within layouts/application (5.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.7ms)
+  Rendered layouts/_navigation.html.erb (5.8ms)
+Completed 200 OK in 243ms (Views: 228.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/6/orders/5/order_details" for 127.0.0.1 at 2017-04-11 18:27:59 +0200
+Processing by OrderDetailsController#index as HTML
+  Parameters: {"user_id"=>"6", "order_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering order_details/index.html.erb within layouts/application
+  [1m[36mOrderDetail Load (0.6ms)[0m  [1m[34mSELECT "order_details".* FROM "order_details" WHERE "order_details"."order_id" = $1[0m  [["order_id", 5]]
+  Rendered order_details/_form.html.erb (0.5ms)
+  Rendered order_details/index.html.erb within layouts/application (4.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (5.5ms)
+  Rendered layouts/_navigation.html.erb (8.3ms)
+Completed 200 OK in 262ms (Views: 256.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/6/orders/5/order_details" for 127.0.0.1 at 2017-04-11 18:31:32 +0200
+Processing by OrderDetailsController#index as HTML
+  Parameters: {"user_id"=>"6", "order_id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering order_details/index.html.erb within layouts/application
+  [1m[36mOrderDetail Load (0.2ms)[0m  [1m[34mSELECT "order_details".* FROM "order_details" WHERE "order_details"."order_id" = $1[0m  [["order_id", 5]]
+  Rendered order_details/_form.html.erb (0.5ms)
+  Rendered order_details/index.html.erb within layouts/application (4.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.8ms)
+  Rendered layouts/_navigation.html.erb (5.8ms)
+Completed 200 OK in 480ms (Views: 470.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/1/orders/1/order_details" for 127.0.0.1 at 2017-04-11 18:34:28 +0200
+Processing by OrderDetailsController#create as */*
+  Parameters: {"u_id"=>"6", "o_id"=>"5", "item"=>"ga", "price"=>"1", "amount"=>"1", "comment"=>"sss", "user_id"=>"1", "order_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.9ms)[0m  [1m[32mINSERT INTO "order_details" ("user_id", "order_id", "item", "amount", "price", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 6], ["order_id", 5], ["item", "ga"], ["amount", 1], ["price", 1.0], ["comment", "sss"], ["created_at", 2017-04-11 16:34:28 UTC], ["updated_at", 2017-04-11 16:34:28 UTC]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 200 OK in 37ms (Views: 0.1ms | ActiveRecord: 17.0ms)
+
+
+Started POST "/users/1/orders/1/order_details" for 127.0.0.1 at 2017-04-11 18:34:44 +0200
+Processing by OrderDetailsController#create as */*
+  Parameters: {"u_id"=>"6", "o_id"=>"5", "item"=>"sssssss", "price"=>"15", "amount"=>"25", "comment"=>"ddddddddddddddd", "user_id"=>"1", "order_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "order_details" ("user_id", "order_id", "item", "amount", "price", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 6], ["order_id", 5], ["item", "sssssss"], ["amount", 25], ["price", 15.0], ["comment", "ddddddddddddddd"], ["created_at", 2017-04-11 16:34:44 UTC], ["updated_at", 2017-04-11 16:34:44 UTC]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:34:54 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.4ms)
+  Rendered layouts/_navigation.html.erb (5.2ms)
+Completed 200 OK in 310ms (Views: 307.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/6/orders/5/order_details" for 127.0.0.1 at 2017-04-11 18:34:58 +0200
+Processing by OrderDetailsController#index as HTML
+  Parameters: {"user_id"=>"6", "order_id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering order_details/index.html.erb within layouts/application
+  [1m[36mOrderDetail Load (0.2ms)[0m  [1m[34mSELECT "order_details".* FROM "order_details" WHERE "order_details"."order_id" = $1[0m  [["order_id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered order_details/_form.html.erb (0.4ms)
+  Rendered order_details/index.html.erb within layouts/application (6.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (5.5ms)
+  Rendered layouts/_navigation.html.erb (7.4ms)
+Completed 200 OK in 222ms (Views: 215.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/friends" for 127.0.0.1 at 2017-04-11 18:35:24 +0200
+Processing by FriendsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered friends/index.html.erb within layouts/application (14.7ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (4.2ms)
+  Rendered layouts/_navigation.html.erb (6.3ms)
+Completed 200 OK in 308ms (Views: 304.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/6/orders" for 127.0.0.1 at 2017-04-11 18:35:26 +0200
+Processing by OrdersController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 6], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  Rendered layouts/_notification_center.html.erb (3.7ms)
+  Rendered layouts/_navigation.html.erb (5.7ms)
+Completed 200 OK in 246ms (Views: 242.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:35:36 +0200
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-04-11 18:35:36 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 308ms (Views: 306.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-04-11 18:35:46 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v9J4ayktYJT4W7cJdZUwOR53jZSW9q2R5QeVo33w6guv5eQnZWFT9xvw9B0csTKKnnKX8XJhw6H3BQxwOrs5yQ==", "user"=>{"email"=>"ali@g.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "ali@g.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2017-04-11 16:35:47 UTC], ["last_sign_in_at", 2017-04-10 23:07:08 UTC], ["sign_in_count", 3], ["updated_at", 2017-04-11 16:35:47 UTC], ["id", 4]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 154ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:35:47 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered home/index.html.erb within layouts/application (5.4ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IN (5, 4, 3, 1)[0m
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_notification_center.html.erb (19.5ms)
+  Rendered layouts/_navigation.html.erb (21.7ms)
+Completed 200 OK in 258ms (Views: 250.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/6/orders/5/order_details" for 127.0.0.1 at 2017-04-11 18:35:59 +0200
+Processing by OrderDetailsController#index as HTML
+  Parameters: {"user_id"=>"6", "order_id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering order_details/index.html.erb within layouts/application
+  [1m[36mOrderDetail Load (1.4ms)[0m  [1m[34mSELECT "order_details".* FROM "order_details" WHERE "order_details"."order_id" = $1[0m  [["order_id", 5]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered order_details/_form.html.erb (0.8ms)
+  Rendered order_details/index.html.erb within layouts/application (9.7ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IN (5, 4, 3, 1)[0m
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_notification_center.html.erb (9.5ms)
+  Rendered layouts/_navigation.html.erb (11.4ms)
+Completed 200 OK in 319ms (Views: 310.7ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/users/1/orders/1/order_details" for 127.0.0.1 at 2017-04-11 18:36:16 +0200
+Processing by OrderDetailsController#create as */*
+  Parameters: {"u_id"=>"4", "o_id"=>"5", "item"=>"foooool", "price"=>"1", "amount"=>"25", "comment"=>"sssssss", "user_id"=>"1", "order_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "order_details" ("user_id", "order_id", "item", "amount", "price", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["order_id", 5], ["item", "foooool"], ["amount", 25], ["price", 1.0], ["comment", "sssssss"], ["created_at", 2017-04-11 16:36:16 UTC], ["updated_at", 2017-04-11 16:36:16 UTC]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-11 18:36:21 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."follower_type" = $2 AND "follows"."blocked" = $3 AND "follows"."followable_type" = $4[0m  [["follower_id", 4], ["follower_type", "User"], ["blocked", false], ["followable_type", "Order"]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IN (5, 4, 3, 1)[0m
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_notification_center.html.erb (11.1ms)
+  Rendered layouts/_navigation.html.erb (20.0ms)
+Completed 200 OK in 297ms (Views: 290.9ms | ActiveRecord: 3.0ms)
+
+

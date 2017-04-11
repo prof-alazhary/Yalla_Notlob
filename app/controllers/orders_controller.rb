@@ -4,8 +4,6 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @notifications = Notification.all.reverse
-
     @orders = current_user.orders.all
   end
 
@@ -16,8 +14,6 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @notifications = Notification.all.reverse
-
     # @order = Order.new
     @user=current_user
     @order = @user.orders.new
@@ -30,8 +26,6 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @notifications = Notification.all.reverse
-
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
     respond_to do |format|
