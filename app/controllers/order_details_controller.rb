@@ -9,8 +9,6 @@ class OrderDetailsController < ApplicationController
     @order_details = @order.order_details
   end
 
-  # GET /order_details/1
-  # GET /order_details/1.json
   def show
   end
 
@@ -22,11 +20,11 @@ class OrderDetailsController < ApplicationController
   # GET /order_details/1/edit
   def edit
   end
-
-  # POST /order_details
-  # POST /order_details.json
+  def get_all_orders
+    
+  end
   def create
-    @order_detail = OrderDetail.new({user_id: params[:user_id], order_id: params[:order_id], item: params[:item], price: params[:price], amount: params[:amount], comment: params[:comment]})
+    @order_detail = OrderDetail.new({user_id: params[:u_id], order_id: params[:o_id], item: params[:item], price: params[:price], amount: params[:amount], comment: params[:comment]})
     respond_to do |format|
       if @order_detail.save
         data={"order": @order_detail} ; data['user_name']=@order_detail.user.name
@@ -37,8 +35,6 @@ class OrderDetailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /order_details/1
-  # PATCH/PUT /order_details/1.json
   def update
     respond_to do |format|
       if @order_detail.update(order_detail_params)

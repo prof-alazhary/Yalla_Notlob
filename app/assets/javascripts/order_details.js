@@ -1,8 +1,9 @@
 $(function()
 {
   $('#pushOrder').click(function (e) {
-      var u_id=$('#user_id').val()
-      var o_id=$('#order_id').val()
+      var user_id=$('#user_id').val()
+      var user_name=$('#user_name').val()
+      var order_id=$('#order_id').val()
       var item=$('#item').val()
       var price=$('#price').val()
       var amount=$('#amount').val()
@@ -10,8 +11,8 @@ $(function()
           $.ajax({
             url: "/users/1/orders/1/order_details",
             method: "post",
-            data: {user_id: u_id,
-                    order_id: o_id,
+            data: {u_id: user_id,
+                    o_id: order_id,
                     item: item,
                     price: price,
                     amount: amount,
@@ -21,10 +22,10 @@ $(function()
                 console.log(result);
                  $("table tbody").append(`  <tr>
 
-                     <td>`+result.user_name+`</td>
+                     <td>`+user_name+`</td>
                      <td>`+item+`</td>
-                     <td>`+price+`</td>
                      <td>`+amount+`</td>
+                     <td>`+price+`</td>
                      <td>`+comment+`</td>
 
                    </tr>`);
@@ -33,6 +34,13 @@ $(function()
               alert(error);
            }
         });//end ajax method
-
   })
+  function getOrders() {
+      // if ($('#order_id').val()!=undefined) {
+      //   window.setInterval(function(){
+      //     console.log('njjj')
+      //
+      //   },3000)
+      }
+  }
 })
