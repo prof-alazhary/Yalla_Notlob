@@ -261,8 +261,8 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
 
- config.omniauth :facebook, "227901877683940", "5d9855f0532ca7c2d03e7b019e52fb10",{scope: "profile"}
- config.omniauth :google_oauth2, "143406499372-qa6vhu8isnomc06g8l8esmb3s2lir85e.apps.googleusercontent.com", "5r6oWS6xsBMrHjlguu78vCCo",{scope: "profile", image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google'}
+ config.omniauth :facebook, "227901877683940", "5d9855f0532ca7c2d03e7b019e52fb10",{:scope=> "profile,email"}
+ config.omniauth :google_oauth2, "143406499372-qa6vhu8isnomc06g8l8esmb3s2lir85e.apps.googleusercontent.com", "5r6oWS6xsBMrHjlguu78vCCo",{:scope=> "profile,email" , image_aspect_ratio: 'square', image_size: 48}
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
