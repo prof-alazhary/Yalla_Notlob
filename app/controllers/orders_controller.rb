@@ -79,11 +79,6 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> origin/development
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:meal, :rest_name, :menu_img, :menu_img, :menu_img_cache, :user_id)
