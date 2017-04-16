@@ -28,13 +28,19 @@
 
         <% if user_signed_in? %>
         <!--This block is only visible to signed in admins -->
+
         <li><strong>  <%= current_user.name %></strong><li>
           &nbsp; &nbsp;
-          <li>  <img src="<%= current_user.avatar %>" height="50px" width="50px"/></li>
+          <!-- <li>  <img src="<%=  current_user.avatar %>" height="50px" width="50px"/></li> -->
+          <%=
+          if current_user.avatar?
+            image_tag(current_user.avatar,size: "50x50")
+          else
+            image_tag("avatarM.png", size: "50x50")
+          end
+          %>
           &nbsp; &nbsp;
-
           <%= render "layouts/notification_center" %>
-
           <li><%= link_to 'Logout', destroy_user_session_path,method: :delete %></li>
           <li><%= %></li>
           <!-- The block ends here -->

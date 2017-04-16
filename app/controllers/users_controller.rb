@@ -17,6 +17,15 @@ class UsersController < ApplicationController
   #     { name: user.name, value: user.id }
   #   end
   # end
+  def autocomplete
+   @user = User.order(:name).where("name LIKE ?", "%#{params[:term]}%")
+   respond_to do |format|
+     format.html
+     format.json {
+       render json: @users.map(&:name).to_json
+     }
+   end
+ end
 
   # GET /users/1
   # GET /users/1.json

@@ -21,21 +21,20 @@ $(function()
             success: function(result){
                 console.log(result);
                  $("table tbody").append(`  <tr val=`+result.order.id+`>
-
-                     <td>`+user_name+`</td>
-                     <td>`+item+`</td>
-                     <td>`+amount+`</td>
-                     <td>`+price+`</td>
-                     <td>`+comment+`</td>
+                   <td>`+user_name+`</td>
+                   <td>`+item+`</td>
+                   <td>`+amount+`</td>
+                   <td>`+price+`</td>
+                   <td>`+comment+`</td>
 
                    </tr>`);
-            },
-            error: function(error) {
-              alert(error);
-           }
-        });//end ajax method
+        },
+        error: function(error) {
+          alert(error);
+        }
+      });//end ajax method
   })
-  
+
   function getOrders() {
       if ($('#order_id').val()!=undefined) {
       var idTerval=  window.setInterval(function(){
