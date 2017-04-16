@@ -20,7 +20,7 @@ $(function()
                   },
             success: function(result){
                 console.log(result);
-                 $("table tbody").append(`  <tr>
+                 $("table tbody").append(`  <tr val=`+result.order.id+`>
 
                      <td>`+user_name+`</td>
                      <td>`+item+`</td>
@@ -35,12 +35,41 @@ $(function()
            }
         });//end ajax method
   })
+  
   function getOrders() {
-      // if ($('#order_id').val()!=undefined) {
-      //   window.setInterval(function(){
-      //     console.log('njjj')
-      //
-      //   },3000)
+      if ($('#order_id').val()!=undefined) {
+      var idTerval=  window.setInterval(function(){
+          $.ajax({
+            url: "/get_all_orders",
+            method: "post",
+            data: {
+                    order_id: $('#order_id').val()
+                  },
+            success: function(result){
+                currentIDs=[]
+                $("table tbody tr").each(function(indx,item){currentIDs.push(parseInt($(item).attr('val')))})
+                newIDs=result.ids.filter(function(item){ return !currentIDs.includes(item)})
+                newOrdes=result.all_orders.filter(function(ord){return newIDs.includes(ord.id)})
+
+                newOrdes.forEach(function (order,index,arr) {
+                  $("table tbody").append(`  <tr val=`+order.id+`>
+
+                      <td>`+result.names[result.ids.indexOf(order.id)]+`</td>
+                      <td>`+order.item+`</td>
+                      <td>`+order.amount+`</td>
+                      <td>`+order.price+`</td>
+                      <td>`+order.comment+`</td>
+
+                    </tr>`);
+                })
+            },
+            error: function(error) {
+              console.log(error);
+           }
+        });//end ajax method
+
+        },3000)
       }
   }
+  getOrders();
 })

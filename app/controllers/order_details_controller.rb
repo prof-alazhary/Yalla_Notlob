@@ -2,27 +2,29 @@ class OrderDetailsController < ApplicationController
   before_action :set_order_detail, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => :create
 
-  # GET /order_details
-  # GET /order_details.json
   def index
     @order = Order.find(params[:order_id])
     @order_details = @order.order_details
   end
 
-  def show
-  end
-
-  # GET /order_details/new
   def new
     @order_detail = OrderDetail.new
   end
 
-  # GET /order_details/1/edit
-  def edit
-  end
   def get_all_orders
-    
+    @order = Order.find(params[:order_id])
+    @order_details = @order.order_details
+    names=[]
+    orders={}
+    @order_details.each {|ord|
+        names.push(ord.user.name)
+    }
+    data={'all_orders'=>@order_details,'ids'=>@order_details.ids,'names'=>names}
+    respond_to do |format|
+      format.json { render json: data.to_json }
+    end
   end
+
   def create
     @order_detail = OrderDetail.new({user_id: params[:u_id], order_id: params[:o_id], item: params[:item], price: params[:price], amount: params[:amount], comment: params[:comment]})
     respond_to do |format|
@@ -47,8 +49,6 @@ class OrderDetailsController < ApplicationController
     end
   end
 
-  # DELETE /order_details/1
-  # DELETE /order_details/1.json
   def destroy
     @order_detail.destroy
     respond_to do |format|
