@@ -28,9 +28,12 @@ class OrdersController < ApplicationController
   def create
     @user=User.find params[:user_id]
     @order = @user.orders.new(order_params)
-
     respond_to do |format|
       if @order.save
+        friends_ids = params['order']['friends']
+        friends_ids.each do |friend_id|
+          User.find(friend_id).follow @order
+        end
         format.html { redirect_to user_orders_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

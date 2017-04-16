@@ -19,30 +19,31 @@
     <%= f.label :meal %>
     <%= f.select :meal, {Breakfast: "Breakfast", Lunch: "Lunch" , Dinner: "Dinner"} %>
     <br>
+    <br>
 
     <%= f.label :rest_name, {class: "control-label", value: "From"}%>
-    <%= f.text_field :rest_name, {class: "form-control",placeholder: "Write A resturant name"} %>
+    <%= f.text_field :rest_name, {class: "form-control",placeholder: "Resturant name"} %>
+    <br>
     <br>
 
     <label for="add-friend">Invite Friends</label>
-    <input type="text" name="friends" id="invite_friend" class="form-control">
+    <input type="text" name="friends" id="invite_friend" class="form-control" placeholder="Friend's e-mail">
+    <br>
     <br>
 
     <!-- Field for image upload -->
+    <label>Upload Menu Image
     <div class="form-group">
       <%= f.label :menu_img do %><br />
       <%= f.file_field :menu_img, class: "form-control" %>
       <%= f.hidden_field :menu_img_cache %>
       <% end %>
     </div>
+    </label>
     <br>
 
 
     <div id="invites-area"></div>
-    <input type="hidden" name="order[friends][]" value="1">
-    <input type="hidden" name="order[friends][]" value="2">
-    <input type="hidden" name="order[friends][]" value="3">
-    <input type="hidden" name="order[friends][]" value="4">
     <div id="groups-area"></div>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Add Order", {class: "btn btn-info", id: "submit"} %>
@@ -53,16 +54,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="container">
-          <h4>Friends List</h4>
+          <h4>Friends to Invite</h4>
         </div>
       </div>
       <div class="panel-body" id="frindesPanelBody">
         <div id='friends' class="row">
           <div class="col-sm-3">
-            <h4>Someone</h4>
-            <img src="<%= image_path('avatarF.png')%>" width="80px" height="80px" class="img-thumbnail"/>
 
-            <br/>
           </div>
         </div>
       </div>

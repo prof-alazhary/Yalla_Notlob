@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
     @user=current_user
     @groups = Group.all
     @group = Group.new
-    # byebug
+    # redirect_back(fallback_location: user_groups_path)
   end
 
   # @user.all_following

@@ -7,7 +7,6 @@ class CreateOrderDetails < ActiveRecord::Migration[5.0]
       t.integer :amount
       t.float :price
       t.string :comment
-
       t.timestamps
     end
   end
