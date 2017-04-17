@@ -17,14 +17,14 @@ class GroupsController < ApplicationController
 
   def add_member
     @user=current_user
-    @member = User.find_by email: params[:email]
+    @member = User.find_by name: params[:name]
     @group = Group.find params[:g_id]
     respond_to do |format|
       if @member!=nil and @group!=nil and @user.friends.include? @member
           @member.follow(@group)
           format.json { render json: @member.to_json }
       else
-          format.json { render json: (params[:email]).to_json }
+          format.json { render json: (params[:name]).to_json }
       end
     end
   end
