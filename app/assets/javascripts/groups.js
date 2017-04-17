@@ -13,15 +13,15 @@ ready = function () {
           $("#allGroups").prepend(`<div id='group_row' class='row'>
           <div class='col-sm-4'>
               <h5>`+result.name+`</h5>
-        </div>
-        <div class='col-sm-4'>
-          <button id='add_members' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
-        </div>
-        <div class='col-sm-4'>
-          <button id='delete_group' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
-        </div>
-        </div>
-        <br/>`)
+              </div>
+              <div class='col-sm-4'>
+                <button id='add_members' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-plus-sign btn btn-primary'></button>
+              </div>
+              <div class='col-sm-4'>
+                <button id='delete_group' name='`+result.name+`' val='`+result.id+`' class='glyphicon glyphicon-remove-sign btn btn-danger'></button>
+              </div>
+              </div>
+              <br/>`)
         },
         error: function(error) {
           alert(error);
@@ -49,7 +49,7 @@ ready = function () {
                   <img src="`+item.img+`" width="80px" height="80px" class="img-thumbnail"/>
                 <br/>
                     <br>
-                    <a val=`+item.id+` href="" class='btn btn-danger'>
+                    <a val=`+item.id+` href="#" class='btn btn-danger'>
                     <i class="icon-remove icon-white"></i>
                     remove
                     </a>
@@ -85,7 +85,7 @@ ready = function () {
       $.ajax({
         url: "/add_member",
         method: "post",
-        data: {email: $('#friend_email').val().trim(), g_id: $('#g_title').attr('val') },
+        data: {name: $('#friend_email').val().trim(), g_id: $('#g_title').attr('val') },
         success: function(result){
           if (result.name!=undefined) {
             console.log(result);
@@ -102,7 +102,7 @@ ready = function () {
                   </div>
             </div>`)
           }else {
-            alert(result+" not valid email!");
+            alert(result+" not valid Name!");
           }
 
         },

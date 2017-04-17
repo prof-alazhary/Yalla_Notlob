@@ -27,6 +27,7 @@
               <th>Amount</th>
               <th>Price</th>
               <th>Comment</th>
+              <th>Option</th>
             </tr>
           </thead>
 
@@ -39,6 +40,12 @@
               <td><%=order_detail.amount%></td>
               <td><%=order_detail.price%></td>
               <td><%=order_detail.comment%></td>
+              <td><%if order_detail.user.id==current_user.id %>
+                  <a  href="#">
+                    <span id='<%=order_detail.id%>' class="glyphicon glyphicon-remove"></span>
+                  </a>
+                  <%end%>
+              </td>
             </tr>
             <% end %>
           </tbody>
