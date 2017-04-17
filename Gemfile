@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'pg'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -10,7 +10,7 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'rails', '~> 5.0.2'
 
 #  gem 'mysql2'
-  gem 'pg'
+  
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Use Puma as the app server
