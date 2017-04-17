@@ -6,7 +6,7 @@ $(function()
       $.ajax({
         url: "/invite_friend",
         method: "post",
-        data: {email: $(this).val().trim() },
+        data: {name: $(this).val().trim() },
         success: function(result){
           if (result.name!=undefined) {
             console.log(result);

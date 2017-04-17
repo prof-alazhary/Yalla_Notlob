@@ -26,6 +26,9 @@ $(function()
                    <td>`+amount+`</td>
                    <td>`+price+`</td>
                    <td>`+comment+`</td>
+                   <td><a  href="#">
+                       <span id=`+result.order.id+` class="glyphicon glyphicon-remove"></span>
+                     </a> </td>
 
                    </tr>`);
         },
@@ -34,7 +37,22 @@ $(function()
         }
       });//end ajax method
   })
-
+  $('tr').on('click','span',function (e) {
+      var id=$(e.target).attr('id')
+      console.log(id);
+      $.ajax({
+            url: '/users/1/orders/1/order_details/1',
+            method: 'delete',
+            data:{o_id: id },
+            success: function (result) {
+              $(e.target).parents('tr').remove()
+              console.log(result);
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          })
+  })
   function getOrders() {
       if ($('#order_id').val()!=undefined) {
       var idTerval=  window.setInterval(function(){
@@ -48,9 +66,13 @@ $(function()
                 currentIDs=[]
                 $("table tbody tr").each(function(indx,item){currentIDs.push(parseInt($(item).attr('val')))})
                 newIDs=result.ids.filter(function(item){ return !currentIDs.includes(item)})
-                newOrdes=result.all_orders.filter(function(ord){return newIDs.includes(ord.id)})
+                deletedIDs=currentIDs.filter(function(item){return !result.ids.includes(item)})
+                newOrders=result.all_orders.filter(function(ord){return newIDs.includes(ord.id)})
 
-                newOrdes.forEach(function (order,index,arr) {
+                deletedIDs.forEach(function (id,indx,arr) {
+                  $('tr[val='+id+']').remove()
+                })
+                newOrders.forEach(function (order,index,arr) {
                   $("table tbody").append(`  <tr val=`+order.id+`>
 
                       <td>`+result.names[result.ids.indexOf(order.id)]+`</td>
@@ -58,9 +80,13 @@ $(function()
                       <td>`+order.amount+`</td>
                       <td>`+order.price+`</td>
                       <td>`+order.comment+`</td>
+                      <td></td>
 
                     </tr>`);
                 })
+                if (!result.order_status) {
+                  $('#Additem').css({display: 'none'})
+                }
             },
             error: function(error) {
               console.log(error);

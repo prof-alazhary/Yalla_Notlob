@@ -19,7 +19,7 @@ class OrderDetailsController < ApplicationController
     @order_details.each {|ord|
         names.push(ord.user.name)
     }
-    data={'all_orders'=>@order_details,'ids'=>@order_details.ids,'names'=>names}
+    data={all_orders: @order_details,ids: @order_details.ids,names: names,order_status: @order.status}
     respond_to do |format|
       format.json { render json: data.to_json }
     end
@@ -50,10 +50,10 @@ class OrderDetailsController < ApplicationController
   end
 
   def destroy
+    @order_detail = OrderDetail.find(params[:o_id])
     @order_detail.destroy
     respond_to do |format|
-      format.html { redirect_to order_details_url, notice: 'Order detail was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: 'Order detail was successfully destroyed.'.to_json }
     end
   end
 
