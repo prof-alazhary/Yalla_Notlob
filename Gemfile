@@ -9,7 +9,7 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 
- gem 'mysql2'
+#  gem 'mysql2'
   gem 'pg'
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
