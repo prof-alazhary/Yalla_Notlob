@@ -1,5 +1,5 @@
-var ready;
-ready = function () {
+$(function ()
+{
 
   $("#addGroup").click(function(e){
     console.log("i am heeer");
@@ -87,7 +87,8 @@ ready = function () {
         method: "post",
         data: {name: $('#friend_email').val().trim(), g_id: $('#g_title').attr('val') },
         success: function(result){
-          if (result.name!=undefined) {
+          console.log(result);
+          if (result.name!==undefined) {
             console.log(result);
             $("#members").prepend(`
                 <div class="col-sm-3">
@@ -112,7 +113,4 @@ ready = function () {
     });
 
   })
-}
-////////////////////////////////////////////////////////
-$(document).ready(ready);
-$(document).on('page:load', ready);
+})

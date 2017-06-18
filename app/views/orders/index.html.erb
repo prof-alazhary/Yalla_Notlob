@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h1>Orders</h1>
-<strong class="text-center" style="background-color:black;color:white;"><%= link_to 'Start New Order', new_user_order_path %></strong>
+<div id="add_new_order">
+  <%= link_to 'Start New Order', new_user_order_path , :style=>'display: none;'%>
+  <button type="button" class="btn btn-info">Start New Order</button>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>

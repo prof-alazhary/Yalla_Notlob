@@ -1,14 +1,20 @@
-$(function()
+// $(document).on('turbolinks:load', function()
+// {
+$(function ()
 {
+  $('#add_new_order button').click(function (e) {
+    window.location.href = $('#add_new_order a').attr('href');
+  })
   $('#invite_friend').keyup(function (e) {
     if (e.keyCode==32) {
-      console.log($(this).val())
+      console.log($(this).val());
       $.ajax({
         url: "/invite_friend",
         method: "post",
         data: {name: $(this).val().trim() },
         success: function(result){
-          if (result.name!=undefined) {
+          console.log(result);
+          if (result.name!==undefined) {
             console.log(result);
             $("#friends").prepend(`
               <div class="col-sm-3">
