@@ -1,5 +1,5 @@
-// var ready;
-// ready = function() {
+// $(document).on('turbolinks:load', function()
+// {
 //     var engine = new Bloodhound({
 //         datumTokenizer: function(d) {
 //             console.log(d);

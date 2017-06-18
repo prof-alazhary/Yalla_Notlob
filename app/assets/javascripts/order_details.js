@@ -1,4 +1,6 @@
-$(function()
+// $(document).on('turbolinks:load', function()
+// {
+$(function ()
 {
   $('#pushOrder').click(function (e) {
       var user_id=$('#user_id').val()
@@ -26,9 +28,7 @@ $(function()
                    <td>`+amount+`</td>
                    <td>`+price+`</td>
                    <td>`+comment+`</td>
-                   <td><a  href="#">
-                       <span id=`+result.order.id+` class="glyphicon glyphicon-remove"></span>
-                     </a> </td>
+                   <td>  <button type="button" name="button" id=`+result.order.id+` class="btn btn-warning glyphicon glyphicon-remove"></button> </td>
 
                    </tr>`);
         },
@@ -37,11 +37,11 @@ $(function()
         }
       });//end ajax method
   })
-  $('tr').on('click','span',function (e) {
+  $('tbody').on('click','button',function (e) {
       var id=$(e.target).attr('id')
       console.log(id);
       $.ajax({
-            url: '/users/1/orders/1/order_details/1',
+            url: '/users/1/orders/1/order_details/'+id+'',
             method: 'delete',
             data:{o_id: id },
             success: function (result) {

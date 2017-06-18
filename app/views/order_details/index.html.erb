@@ -8,7 +8,7 @@
 <body>
   <h1>Order Details</h1>
   <div class="container">
-    <div class="col-sm-6">
+    <div class="col-sm-6" hidden="">
       <div class="row">
         <div class="col-sm-12">
           <a href="#" data-toggle="modal" data-target="#myModal">10 friends invited,click to view</a>
@@ -41,9 +41,9 @@
               <td><%=order_detail.price%></td>
               <td><%=order_detail.comment%></td>
               <td><%if order_detail.user.id==current_user.id %>
-                  <a  href="#">
-                    <span id='<%=order_detail.id%>' class="glyphicon glyphicon-remove"></span>
-                  </a>
+
+                  <button type="button" name="button" id='<%=order_detail.id%>' class="btn btn-warning glyphicon glyphicon-remove"></button>
+
                   <%end%>
               </td>
             </tr>

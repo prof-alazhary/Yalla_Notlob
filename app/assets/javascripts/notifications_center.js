@@ -1,4 +1,6 @@
-$(document).ready(function()
+// $(document).on('turbolinks:load', function()
+// {
+$(function ()
 {
   // open notification center on click
   $("#open_notification").click(function()
@@ -17,7 +19,7 @@ $(document).ready(function()
 
   $("#notificationContainer").click(function()
   {
-    return false;
+    // return false;
   });
 
 });
